@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Waste Wizard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Background Music -->
+  <audio autoplay loop>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    Your browser does not support audio.
+  </audio>
+
+  <!-- Falling Images Container -->
+  <div class="images-container"></div>
+
+  <!-- Animated Central Box -->
+  <div class="main-box">
+    <h1>♻️ Welcome to Waste Wizard</h1>
+    <p class="quote">🌱 "Cleanliness is the hallmark of perfect standards and the best quality inspector is the conscience." – J.R.D Tata 🇮🇳</p>
+
+    <input type="text" id="wasteInput" placeholder="e.g., banana peel, plastic bottle">
+    <button onclick="classifyAndNavigate()">Check Category</button>
+
+    <p id="result"></p>
+  </div>
+
+  <!-- Updated script reference -->
+  <script src="script.js"></script>
+  
+  <!-- Falling Images Script -->
+  <script>
+    setInterval(() => {
+      const fallingImg = document.createElement("div");
+      fallingImg.classList.add("falling-image");
+      
+      // Set random properties
+      fallingImg.style.left = Math.random() * 100 + "vw";
+      fallingImg.style.width = 30 + Math.random() * 30 + "px";
+      fallingImg.style.animationDuration = 4 + Math.random() * 3 + "s";
+      fallingImg.style.opacity = 0.7 + Math.random() * 0.3;
+      
+      document.querySelector(".images-container").appendChild(fallingImg);
+
+      setTimeout(() => fallingImg.remove(), 7000);
+    }, 300);
+  </script>
+</body>
+</html>

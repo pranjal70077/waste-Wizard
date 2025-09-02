@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Result - Waste Wizard</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Background Animation -->
+  <div class="images-container"></div>
+
+  <!-- Background Music -->
+  <audio autoplay loop>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg" />
+  </audio>
+ 
+  <!-- Animated Box -->
+  <div class="main-box">
+    <h2 class="thankyou">🎉 Thank You! 🎉</h2>
+    <p class="big-result" id="showResult">Loading...</p>
+    <button onclick="goBack()" class="back-button">Check Another Item</button>
+  </div>
+
+  <script>
+    // Falling Image Script
+    setInterval(() => {
+      const fallingImg = document.createElement("div");
+      fallingImg.classList.add("falling-image");
+      
+      // Set random properties
+      fallingImg.style.left = Math.random() * 100 + "vw";
+      fallingImg.style.width = 30 + Math.random() * 30 + "px";
+      fallingImg.style.animationDuration = 4 + Math.random() * 3 + "s";
+      fallingImg.style.opacity = 0.7 + Math.random() * 0.3;
+      
+      document.querySelector(".images-container").appendChild(fallingImg);
+
+      setTimeout(() => fallingImg.remove(), 7000);
+    }, 300);
+
+    // Load the item from storage and show result
+    const input = localStorage.getItem("wasteItem") || "Nothing";
+    document.getElementById("showResult").innerText = `"${input}" is: ${getCategory(input)}`;
+
+    function getCategory(item) {
+      item = item.toLowerCase();
+      if (item.includes("banana") || item.includes("peel") || item.includes("food") || item.includes("apple")) return "Organic Waste ♻️";
+      if (item.includes("plastic") || item.includes("bottle") || item.includes("can")) return "Recyclable Waste 🧴";
+      if (item.includes("battery") || item.includes("light") || item.includes("bulb") || item.includes("e-waste")) return "Hazardous Waste ☠️";
+      return "General Waste 🚮";
+    }
+    
+    function goBack() {
+      window.location.href = "index.html";
+    }
+  </script>
+</body>
+</html>
