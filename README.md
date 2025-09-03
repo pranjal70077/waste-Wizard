@@ -44,7 +44,7 @@ Clone the repository
 
 Open index.html in your browser
 
-Start classifying waste items!
+Start classifying waste items.
 
 📝 License
 MIT License - see LICENSE file for details.
